@@ -23,6 +23,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var colorPicker: ColorPicker!
     
+    var currentEllipse: EllipseView?
+    
     @IBAction func handleCanvasTap(sender: UITapGestureRecognizer) {
         let tapPoint = sender.locationInView(canvas)
         
@@ -31,7 +33,13 @@ class ViewController: UIViewController {
         ellipse.bounds = CGRect(x: 0, y: 0, width: 60, height: 60)
         ellipse.center = tapPoint
         ellipse.opaque = false
+        ellipse.contentMode = .Redraw
+        currentEllipse = ellipse
         canvas.addSubview(ellipse)
+    }
+    
+    @IBAction func handleCanvasPinch(recognizer: UIPinchGestureRecognizer) {
+        currentEllipse?.bounds.size = CGSize(width: 60 * recognizer.scale, height: 60 * recognizer.scale)
     }
 }
 
