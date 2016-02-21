@@ -12,7 +12,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +19,16 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBOutlet weak var canvas: UIView!
 
+    @IBAction func handleCanvasTap(sender: UITapGestureRecognizer) {
+        let tapPoint = sender.locationInView(canvas)
+        
+        let ellipse = EllipseView()
+        ellipse.bounds = CGRect(x: 0, y: 0, width: 60, height: 60)
+        ellipse.center = tapPoint
+        ellipse.opaque = false
+        canvas.addSubview(ellipse)
+    }
 }
 
