@@ -20,11 +20,14 @@ class ViewController: UIViewController {
     }
 
     @IBOutlet weak var canvas: UIView!
-
+    
+    @IBOutlet weak var colorPicker: ColorPicker!
+    
     @IBAction func handleCanvasTap(sender: UITapGestureRecognizer) {
         let tapPoint = sender.locationInView(canvas)
         
         let ellipse = EllipseView()
+        ellipse.color = colorPicker.selectedColor
         ellipse.bounds = CGRect(x: 0, y: 0, width: 60, height: 60)
         ellipse.center = tapPoint
         ellipse.opaque = false
