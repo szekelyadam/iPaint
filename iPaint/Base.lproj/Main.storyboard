@@ -18,24 +18,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qoK-8Z-K8C">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="482"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="438"/>
                                 <color key="backgroundColor" red="1" green="0.98964048034676744" blue="0.88379953125597399" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="4kq-Eg-j4J" appends="YES" id="o9M-Gk-3Ea"/>
                                     <outletCollection property="gestureRecognizers" destination="PNw-Ih-e5Z" appends="YES" id="3xR-ek-YaC"/>
+                                    <outletCollection property="gestureRecognizers" destination="uNW-Nc-kMt" appends="YES" id="1bD-8c-Ltd"/>
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hQC-AW-HX9" customClass="ColorPicker" customModule="iPaint" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="479" width="320" height="89"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="60" minValue="1" maxValue="120" translatesAutoresizingMaskIntoConstraints="NO" id="lXm-HQ-rzK">
+                                <rect key="frame" x="-2" y="441" width="324" height="31"/>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="canvas" destination="qoK-8Z-K8C" id="dHc-1j-cAt"/>
                         <outlet property="colorPicker" destination="hQC-AW-HX9" id="fV4-Mj-pJ6"/>
+                        <outlet property="radiusSlider" destination="lXm-HQ-rzK" id="dg4-gl-UOZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -49,6 +54,11 @@
                         <action selector="handleCanvasPinch:" destination="BYZ-38-t0r" id="Clx-Yt-Epa"/>
                     </connections>
                 </pinchGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="uNW-Nc-kMt">
+                    <connections>
+                        <action selector="swipeToDelete:" destination="BYZ-38-t0r" id="PEf-79-D80"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="130" y="305"/>
         </scene>

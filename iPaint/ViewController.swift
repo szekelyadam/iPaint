@@ -14,6 +14,13 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
 
+    @IBAction func swipeToDelete(sender: UISwipeGestureRecognizer) {
+        for view in canvas.subviews {
+            let view = view as UIView
+            view.removeFromSuperview()
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -25,12 +32,14 @@ class ViewController: UIViewController {
     
     var currentEllipse: EllipseView?
     
+    @IBOutlet weak var radiusSlider: UISlider!
+    
     @IBAction func handleCanvasTap(sender: UITapGestureRecognizer) {
         let tapPoint = sender.locationInView(canvas)
         
         let ellipse = EllipseView()
         ellipse.color = colorPicker.selectedColor
-        ellipse.bounds = CGRect(x: 0, y: 0, width: 60, height: 60)
+        ellipse.bounds = CGRect(x: 0, y: 0, width: Int(radiusSlider.value), height: Int(radiusSlider.value))
         ellipse.center = tapPoint
         ellipse.opaque = false
         ellipse.contentMode = .Redraw
